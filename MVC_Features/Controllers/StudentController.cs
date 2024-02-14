@@ -55,5 +55,9 @@ namespace MVC_Features.Controllers
             Student student = context.Students.SingleOrDefault(s => s.Id == id);
             return View(student);
         }
+        public IActionResult TestGit()
+        {
+            return Content("ttest");
+        }
     }
 }
