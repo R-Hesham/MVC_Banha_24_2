@@ -1,0 +1,122 @@
+﻿
+
+
+<!-- Model => Data Type dynamic -->
+<!-- Loosely type view -->
+<!-- Exceptions happens in Runtime -->
+<!-- RuntimeBinderException: 
+    'System.Collections.Generic.List<MVC_Features.Models.Student>'
+    does not contain a definition for 'Id' -->
+@* @Model.Id *@
+
+
+<!-- Strong type view -->
+@using MVC_Features.ViewModels
+@model StudentsWithDepartmentsVM
+
+<!-- Errors at compilation time -->
+@* @Model.id *@
+
+
+@{
+    //Layout = "_ITILayout";
+    ViewData["Title"] = "Index";
+    int i = 1;
+}
+
+
+
+@* Rendered in @RenderBody *@
+<h1>Index</h1>
+
+<!--With ViewModel-->
+<div class="container">
+    <p>@Model.Name</p>
+    <p>@Model.Id</p>
+    <div>
+        <!--Departments-->
+        @foreach (Department item in Model.Departments)
+        {
+            <button class="btn btn-success">@item.Name</button>
+        }
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Age</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Students)
+        {
+            <tr>
+                <th scope="row">@(i++)</th>
+                <td>@item.Name</td>
+                <td>@item.Address</td>
+                <td>@item.Age</td>
+                <td><i class="fa-solid fa-circle-info"></i></td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+<!--With model-->
+@* <div class="container">
+    @* <p>@ViewData["name"]</p> *@
+    @* <p>@ViewData["id"]</p> *@
+ @*    <p>@ViewBag.id</p> *@
+    @* <p>@ViewBag.name</p> *@
+    <div>
+        <!--Departments-->
+        @* @foreach (var item in (List<Department>)ViewData["departments"]) *@
+       @*  @foreach (Department item in ViewBag.departments)
+        {
+            <button class="btn btn-success">@item.Name</button>
+        }
+    </div>
+</div> *@
+
+@* <table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Age</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.Students)
+        {
+            <tr>
+                <th scope="row">@(i++)</th>
+                <td>@item.Name</td>
+                <td>@item.Address</td>
+                <td>@item.Age</td>
+                <td><i class="fa-solid fa-circle-info"></i></td>
+            </tr>
+        }
+        
+    </tbody>
+</table> *@
+
+
+
+
+@* Rendered in @RenderSection *@
+@* @section styles{
+    <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
+}
+
+@section SidebarTitle{
+    All Students
+    @i
+} *@

@@ -1,0 +1,28 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    //Layout = "_ITILayout";
+}
+@model Student
+
+@if(Model is null)
+{
+    <h5>Student not valid</h5>
+}else{
+<div class="card">
+  <div class="card-body">
+        <h5 class="card-title">Student Details</h5>
+    <h6 class="card-subtitle mb-2 text-muted">@Model.Name</h6>
+    <p class="card-text">@Model.Address</p>
+    <p class="card-text">@Model.Age</p>
+    <a href="#" class="card-link">Back to list</a>
+  </div>
+</div>
+}
+
+
+@* Rendered in @RenderSection *@
+@* @section SidebarTitle {
+    Student Details
+} *@
