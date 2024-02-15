@@ -1,0 +1,30 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    SelectList list = new SelectList(ViewBag.departments,"Id","Name");
+}
+@model Instructor
+
+<h1>Add Instructor</h1>
+<form asp-action="AddDB" asp-controller="Helpers">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input class="form-control" asp-for="Name">
+    </div>
+    <div class="mb-3">
+        <label asp-for="Degree" class ="form-label"></label>
+        <input class="form-control" asp-for="Degree">
+    </div>
+    <div class="mb-3">
+        <label asp-for="Salary" class="form-label"></label>
+        <input class="form-control" asp-for="Salary">
+    </div>
+
+    <div class="mb-3 form-check">
+        <label class="form-check-label" asp-for="Dept_Id"></label>
+        <select asp-for="Dept_Id" class="form-control" asp-items="list">
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+</form>

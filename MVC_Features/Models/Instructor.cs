@@ -11,6 +11,7 @@ namespace MVC_Features.Models
         [Column(TypeName ="money")]
         public decimal? Salary { get; set; }
         [ForeignKey("workDepartment")]
+        [Display(Name ="Department")]
         public int? Dept_Id { get; set; }
 
         // Navigation Properties

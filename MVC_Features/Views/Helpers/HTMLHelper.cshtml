@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewData["Title"] = "HTMLHelper";
+}
+@model Instructor
+<h1>HTMLHelper</h1>
+
+@Html.ActionLink("text","action","controller",new {id= 2, name= "hhh"},new{})
+<form>
+    <!-- Loosely Type-->
+        @* @Html.Label("Name")
+        @Html.TextBox("Name","test",new {style="color:red;",@class="form-control"})
+     *@
+    <!-- Strong Type-->
+    @Html.LabelFor(m => m.Name)
+    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+    
+    <input type="submit"/>
+</form>
+

@@ -1,0 +1,38 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<form action="/ModelBinder/GetData/3" method="get">
+    <!--Primitive-->
+    @* <input name="id" /> *@
+    @* <input name="name" />
+    <input name="age" /> *@
+
+
+    <!--List-->
+    @* <select multiple name="data">
+        <option>ss</option>
+        <option>rr</option>
+        <option>tt</option>
+    </select> *@
+
+  @*   <input name="data[1]"  value="ee"/>
+    <input name="data[2]"  value="pp"/>
+    <input name="data[0]"  value="mm"/>
+ *@
+    <!--Dictionary-->
+    @* <input name="data[name]" value="ali" />
+    <input name="data[age]" value="5" />
+    <input name="data[address]" value="cairo" /> *@
+
+    <!--User Defined-->
+    <input name="name" value="ali"/>
+    <input name="salary" value="5000"/>
+
+    <!--Inner object-->
+    <input name="workDepartment.name" value="sd"/>
+    <input type="submit" />
+</form>
