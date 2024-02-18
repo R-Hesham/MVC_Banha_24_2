@@ -1,0 +1,222 @@
+html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Freelancer - Start Bootstrap Theme</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script
+      src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Google fonts-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/css/styles.css" rel="stylesheet" />
+  </head>
+  <body id="page-top">
+    <!-- Navigation-->
+    <nav
+      class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top"
+      id="mainNav"
+    >
+      <div class="container">
+        <a class="navbar-brand" href="#page-top">Start Bootstrap</a>
+        <button
+          class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item mx-0 mx-lg-1">
+              <a
+                class="nav-link py-3 px-0 px-lg-3 rounded"
+                href="/instructor/index"
+                >Instructors</a
+              >
+            </li>
+            <li class="nav-item mx-0 mx-lg-1">
+              <a
+                class="nav-link py-3 px-0 px-lg-3 rounded"
+                href="/ModelBinder/Index"
+                >Model Binder</a
+              >
+            </li>
+            <li class="nav-item mx-0 mx-lg-1">
+              <a
+                class="nav-link py-3 px-0 px-lg-3 rounded"
+                href="/Validation/Index"
+                >Validation</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <a class="btn btn-outline-success" href="/Account/login">Login</a>
+        </div>
+      </div>
+    </nav>
+    <!-- Masthead-->
+    <header class="masthead bg-primary text-white text-center">
+      <div class="container d-flex align-items-center flex-column">
+        <!-- Masthead Avatar Image-->
+        <img
+          class="masthead-avatar mb-5"
+          src="/assets/img/avataaars.svg"
+          alt="..."
+        />
+        <!-- Masthead Heading-->
+        <h1 class="masthead-heading text-uppercase mb-0">Start Bootstrap</h1>
+        <!-- Icon Divider-->
+        <div class="divider-custom divider-light">
+          <div class="divider-custom-line"></div>
+          <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+          <div class="divider-custom-line"></div>
+        </div>
+        <!-- Masthead Subheading-->
+        <p class="masthead-subheading font-weight-light mb-0">
+          Graphic Artist - Web Designer - Illustrator
+        </p>
+      </div>
+    </header>
+    <div>
+      <form method="post" action="http://localhost:5101/Validation/Add">
+        <div>
+          <label class="form-label" for="Name">Name</label>
+          <input
+            class="form-control"
+            type="text"
+            data-val="true"
+            data-val-required="The Name field is required."
+            id="Name"
+            name="Name"
+            value=""
+          />
+        </div>
+        <div>
+          <label class="form-label" for="Address">Address</label>
+          <input
+            class="form-control"
+            type="text"
+            id="Address"
+            name="Address"
+            value=""
+          />
+        </div>
+        <div>
+          <label class="form-label" for="Age">Age</label>
+          <input
+            class="form-control"
+            type="number"
+            id="Age"
+            name="Age"
+            value=""
+          /><input name="__Invariant" type="hidden" value="Age" />
+        </div>
+        <div>
+          <label class="form-label" for="DeptId">DeptId</label>
+          <select class="form-control" id="DeptId" name="DeptId">
+            <option value="1">SD</option>
+            <option value="2">OS</option>
+          </select>
+        </div>
+        <input
+          name="__RequestVerificationToken"
+          type="hidden"
+          value="CfDJ8NSt66UWd9VKhq9xf60igaFR9Ysgex24dX7ep2rJFDbuX52mxh3fAR8IAIGV7xl7cWnq40VE98advc9NITMb3R122ZuyKUZxgu-wBmJfKAraKegoep4WSy_fJHkvKGbVM9bD7cODKp_4eWIz0a28gZs"
+        />
+        <input type="submit" value="Add" />
+      </form>
+    </div>
+    <!-- Footer-->
+    <footer class="footer text-center">
+      <div class="container">
+        <div class="row">
+          <!-- Footer Location-->
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <h4 class="text-uppercase mb-4">Location</h4>
+            <p class="lead mb-0">
+              2215 John Daniel Drive
+              <br />
+              Clark, MO 65243
+            </p>
+          </div>
+          <!-- Footer Social Icons-->
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <h4 class="text-uppercase mb-4">Around the Web</h4>
+            <a class="btn btn-outline-light btn-social mx-1" href="#!"
+              ><i class="fab fa-fw fa-facebook-f"></i
+            ></a>
+            <a class="btn btn-outline-light btn-social mx-1" href="#!"
+              ><i class="fab fa-fw fa-twitter"></i
+            ></a>
+            <a class="btn btn-outline-light btn-social mx-1" href="#!"
+              ><i class="fab fa-fw fa-linkedin-in"></i
+            ></a>
+            <a class="btn btn-outline-light btn-social mx-1" href="#!"
+              ><i class="fab fa-fw fa-dribbble"></i
+            ></a>
+          </div>
+          <!-- Footer About Text-->
+          <div class="col-lg-4">
+            <h4 class="text-uppercase mb-4">About Freelancer</h4>
+            <p class="lead mb-0">
+              Freelance is a free to use, MIT licensed Bootstrap theme created
+              by
+              <a href="http://startbootstrap.com">Start Bootstrap</a>
+              .
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="/js/scripts.js"></script>
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+    <!-- Visual Studio Browser Link -->
+    <script
+      type="text/javascript"
+      src="/_vs/browserLink"
+      async="async"
+      id="__browserLink_initializationData"
+      data-requestId="e5c1c51284d24bf899fef45f4cdad592"
+      data-requestMappingFromServer="false"
+      data-connectUrl="http://localhost:54384/4b0e124ede6441d5a5a8315446496314/browserLink"
+    ></script>
+    <!-- End Browser Link -->
+    <script src="/_framework/aspnetcore-browser-refresh.js"></script>
+  </body>
+</html>
