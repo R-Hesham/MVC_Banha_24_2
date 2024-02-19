@@ -69,6 +69,15 @@ namespace MVC_Features
             app.UseSession();
 
             app.MapControllerRoute(
+                name: "TestRoute",
+                pattern: "/LearnRoute/{action=Index}/test/{name:alpha:length(2,6)}",
+                defaults: new
+                {
+                    controller="Routing"
+                }
+                );
+
+            app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
             #endregion

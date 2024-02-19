@@ -1,0 +1,35 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Department
+
+@ViewBag.extra
+<div class="card">
+    <div class="card-header">
+        Department
+        <p>Name: @Model.Name</p>
+        <p>Description: @Model.Description</p>
+        <p>Location: @Model.Location</p>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Manger</h5>
+        <a class="btn btn-success" onclick="getManger(@Model.MangerId)">Show manger</a>
+       <div id="manger"></div>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Instructors</h5>
+        @foreach(var ins in Model.instructors)
+        {
+            <partial name="_InstructorCardPartial" model="ins"></partial>
+        }
+        
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/manger.js"></script>
+}

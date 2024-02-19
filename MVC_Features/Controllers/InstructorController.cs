@@ -22,6 +22,17 @@ namespace MVC_Features.Controllers
             Instructor ins = context.Instructors.Include(i => i.workDepartment).SingleOrDefault(i=>i.Id == id);
             return View(ins);
         }
+        public IActionResult GetCard(int id)
+        {
+            Instructor ins = context.Instructors.Include(i => i.workDepartment).SingleOrDefault(i => i.Id == id);
+            return PartialView("_InstructorCardPartial",ins);
+        }
+        public IActionResult GetData(int id)
+        {
+            Instructor ins = context.Instructors.Include(i => i.workDepartment).SingleOrDefault(i => i.Id == id);
+            var data = new { ins.Name, ins.Degree };
+            return Json(data);
+        }
 
         // Create 
         // display form
