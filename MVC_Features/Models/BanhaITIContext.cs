@@ -4,7 +4,9 @@ namespace MVC_Features.Models
 {
     public class BanhaITIContext : DbContext
     {
-        public BanhaITIContext(){}
+        public BanhaITIContext(DbContextOptions<BanhaITIContext> options):base(options) { }
+
+        public BanhaITIContext() { }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=.;Database=BanhaITI;Trusted_Connection=True;TrustServerCertificate=True");

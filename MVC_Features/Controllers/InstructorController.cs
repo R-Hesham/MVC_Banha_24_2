@@ -1,35 +1,39 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MVC_Features.Models;
+using MVC_Features.Repositories;
 
 namespace MVC_Features.Controllers
 {
     public class InstructorController : Controller
     {
-        BanhaITIContext context;
-        public InstructorController()
+        private IInstructorRepo instructorRepo;
+        private IDepartmentRepo departmentRepo;
+        //1- ask to inject
+        public InstructorController(IInstructorRepo _insRepo, IDepartmentRepo _deptRepo)
         {
-            context = new BanhaITIContext();
+            instructorRepo = _insRepo;
+            departmentRepo = _deptRepo;
         }
         public IActionResult Index()
         {
-            List<Instructor> instructors = context.Instructors.Include(i=>i.workDepartment).ToList();
+            List<Instructor> instructors = instructorRepo.GetAll();
             return View(instructors);
         }
 
         public IActionResult Details(int id)
         {
-            Instructor ins = context.Instructors.Include(i => i.workDepartment).SingleOrDefault(i=>i.Id == id);
+            Instructor ins = instructorRepo.GetById(id);
             return View(ins);
         }
         public IActionResult GetCard(int id)
         {
-            Instructor ins = context.Instructors.Include(i => i.workDepartment).SingleOrDefault(i => i.Id == id);
-            return PartialView("_InstructorCardPartial",ins);
+            Instructor ins = instructorRepo.GetById(id);
+           return PartialView("_InstructorCardPartial",ins);
         }
         public IActionResult GetData(int id)
         {
-            Instructor ins = context.Instructors.Include(i => i.workDepartment).SingleOrDefault(i => i.Id == id);
+            Instructor ins = instructorRepo.GetById(id);
             var data = new { ins.Name, ins.Degree };
             return Json(data);
         }
@@ -38,7 +42,7 @@ namespace MVC_Features.Controllers
         // display form
         public IActionResult GetAddForm()
         {
-            List<Department> departments = context.Departments.ToList();
+            List<Department> departments = departmentRepo.GetAll();
 
             ViewData["departments"] = departments;
             return View();
@@ -55,8 +59,7 @@ namespace MVC_Features.Controllers
                 Dept_Id = deptId
             };
 
-            context.Instructors.Add(instructor);
-            context.SaveChanges();
+            instructorRepo.Add(instructor);
 
             return RedirectToAction("Index");
         }
@@ -65,21 +68,16 @@ namespace MVC_Features.Controllers
         // display form
         public IActionResult GetEditForm(int id)
         {
-            Instructor instructor = context.Instructors.SingleOrDefault(i => i.Id == id);
-            List<Department> departments = context.Departments.ToList();
+            Instructor instructor = instructorRepo.GetById(id);
+            List<Department> departments = departmentRepo.GetAll();
 
             ViewData["departments"] = departments;
             return View(instructor);
         }
-        public IActionResult Update(int id, string name, string degree, decimal salary, int deptId) {
 
-            Instructor instructor = context.Instructors.SingleOrDefault(i => i.Id == id);
-            instructor.Name = name;
-            instructor.Degree = degree;
-            instructor.Salary = salary;
-            instructor.Dept_Id = deptId;
+        public IActionResult Update(Instructor ins) {
 
-            context.SaveChanges();
+           instructorRepo.Update(ins);
 
             return RedirectToAction("Index");
         }
@@ -90,9 +88,7 @@ namespace MVC_Features.Controllers
 
         public IActionResult Delete(int id)
         {
-            Instructor instructor = context.Instructors.SingleOrDefault(i => i.Id == id);
-            context.Instructors.Remove(instructor);
-            context.SaveChanges();
+            instructorRepo.Delete(id);
             return RedirectToAction("Index");
         }
     }

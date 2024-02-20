@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using MVC_Features.Lifetime;
+using MVC_Features.Repositories;
+
 namespace MVC_Features
 {
     public class Program
@@ -7,16 +11,49 @@ namespace MVC_Features
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.  // dependency injection
+
+            // 1) Framework Service
+                 // built-in service // resgistered by default
+            // 2) application Service
+                   // built-in service  // registered by programmer
             builder.Services.AddControllersWithViews();
             builder.Services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(5);
             });
 
+            // 3) user defined service
+            // 2- Register service (lifetime of object)
+
+            // object per request
+            //builder.Services.AddScoped<ImyService, myService>();
+
+            // object per application
+            //builder.Services.AddSingleton<ImyService, myService>();
+
+            // object per injection
+            builder.Services.AddTransient<ImyService, myService>();
+
+
+
+            builder.Services.AddScoped<IInstructorRepo, InstructorRepo>();
+            builder.Services.AddScoped<IDepartmentRepo, DepartmentRepo>();
+
+
+            //3- resolve in runtime when creating object
+
+
+            // inject DB
+            builder.Services.AddDbContext<BanhaITIContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("ITI"));
+            });
+
             var app = builder.Build();
 
 
             // Middlewares
+            #region user-defined
             // Excute Code  , call next middleware
             // app.use()
             //app.Use(async (httpContext, next) =>
@@ -51,7 +88,7 @@ namespace MVC_Features
 
 
             //app.Map("/controller/action", () => { });
-
+            #endregion
 
             #region Built-in Pipline
             //// Configure the HTTP request pipeline.
